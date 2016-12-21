@@ -11,6 +11,11 @@
 let camera, scene, renderer;
 let dodecahedron;
 
+let uniforms = {
+    time: { type: "f", value: 0 },
+    resolution: { value: new THREE.Vector2() }
+};
+
 /**
  * An initialization function. 
  * 
@@ -18,6 +23,8 @@ let dodecahedron;
  * the basic models.
  */
 function init() {
+    THREE.Cache.enabled = false;
+
     // Add a new scene and renderer to the HTML <body> tag.
     container = document.createElement('div');
     document.body.appendChild(container);
@@ -53,6 +60,9 @@ function init() {
  * The event handler for the Resize Window Event.
  */
 function onWindowResize() {
+    uniforms.resolution.value.x = window.innerWidth;
+	uniforms.resolution.value.y = window.innerHeight;
+
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -62,21 +72,26 @@ function onWindowResize() {
  * Load an STL model for a Stellated Dodecahedron.
  */
 function loadModel() {
-    var loader = new THREE.STLLoader();
+    let loader = new THREE.STLLoader();
     loader.load('../assets/stellated.stl', function (geometry) {
         setupAttributes(geometry);
 
         ShaderLoader("./part01.vert", "./part01.frag", function (vtext, ftext) {
             console.log(vtext);
             console.log(ftext);
-        });
+            let material = new THREE.ShaderMaterial({
+                uniforms: uniforms,
+                vertexShader: vtext,
+                fragmentShader: ftext
+            });
 
-        var material = new THREE.MeshPhongMaterial({ color: 0xff5533, specular: 0x111111, shininess: 200 });
-        var mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(0.0, 0.0, 0.0);
-        dodecahedron = mesh;
-        scene.add(dodecahedron);
-        console.log("Dodecahedron Loaded");
+            // let material = new THREE.MeshPhongMaterial({ color: 0xff5533, specular: 0x111111, shininess: 200 });
+            let mesh = new THREE.Mesh(geometry, material);
+            mesh.position.set(0.0, 0.0, 0.0);
+            dodecahedron = mesh;
+            scene.add(dodecahedron);
+            console.log("Dodecahedron Loaded");
+        });
     });
 }
 
@@ -85,6 +100,7 @@ function loadModel() {
  */
 function render() {
     var timer = Date.now() * 0.0005;
+    uniforms.time.value += 0.005;
     if (dodecahedron) {
         dodecahedron.rotation.x += 0.005;
         dodecahedron.rotation.y += 0.02;
