@@ -13,7 +13,10 @@ let dodecahedron;
 
 let uniforms = {
     time: { type: "f", value: 0 },
-    resolution: { value: new THREE.Vector2() }
+    resolution: { value: new THREE.Vector2() },
+    LightPosition: { value: new THREE.Vector4(1.0,1.0,1.0,1.0)},
+    Kd: { value: new THREE.Vector3(1.0,1.0,1.0)},
+    Ld: { value: new THREE.Vector3(1.0,0.0,0.0)}
 };
 
 /**
