@@ -35,7 +35,7 @@ python -m http.server
 
 Open your browser and go to `127.0.0.1:8000`. If everything is OK, you should see the index of the code examples. Now move to the "Lesson 0 - Environment Setup" link. You should see a spinning Stellated Dodecahedron.
 
-INSERT EXAMPLE HERE
+{{< shader 00 >}}
 
 ## Explore the code
 

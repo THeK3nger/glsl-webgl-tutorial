@@ -16,6 +16,9 @@
     <link href="{{ .Site.BaseURL }}/css/horsey.css" rel="stylesheet">
     <link href="{{ .Site.BaseURL }}/css/theme.css" rel="stylesheet">
     <link href="{{ .Site.BaseURL }}/css/hugo-theme.css" rel="stylesheet">
+    {{ range .Site.Params.custom_css }}
+    <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
+    {{ end }}
     <script src="{{ .Site.BaseURL }}/js/jquery-2.x.min.js"></script>
     <style type="text/css">:root #header + #content > #left > #rlblock_left
     {display:none !important;}</style>
