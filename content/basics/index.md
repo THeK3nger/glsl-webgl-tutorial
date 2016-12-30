@@ -1,16 +1,16 @@
 +++
 date = "2016-12-30T12:05:31+01:00"
-icon = "<b>X. </b>"
+icon = "<b>1. </b>"
 chapter = true
 next = "/next/path"
 prev = "/prev/path"
 weight = 0
-title = "Some Chapter title"
+title = "Introduction"
 
 +++
 
-### Chapter X
+### Chapter 1
 
-# Some Chapter title
+# Introduction
 
-Lorem ipsum
+Basic GLSL and THREE.js bits.
