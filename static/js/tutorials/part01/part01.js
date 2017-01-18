@@ -39,7 +39,7 @@ function init() {
     container.appendChild(renderer.domElement);
 
     // Fixed Camera Setup
-    camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 2000);
+    camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 1, 2000);
     camera.position.z = 20;
     cameraTarget = new THREE.Vector3(0, 0, 0);
 
@@ -76,7 +76,7 @@ function onWindowResize() {
  */
 function loadModel() {
     let loader = new THREE.STLLoader();
-    loader.load('../assets/stellated.stl', function (geometry) {
+    loader.load('/assets/stellated.stl', function (geometry) {
         setupAttributes(geometry);
 
         ShaderLoader("./part01.vert", "./part01.frag", function (vtext, ftext) {
