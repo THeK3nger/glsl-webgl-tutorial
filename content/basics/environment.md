@@ -1,5 +1,5 @@
 +++
-next = "/next/path"
+next = "/basics/basic_shader"
 prev = "/basics/intro"
 weight = 6
 title = "Environment Setup"
