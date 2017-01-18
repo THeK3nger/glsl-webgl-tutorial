@@ -45,7 +45,7 @@ In this lesson, we are just setting up a small development environment. Look in 
 /**
  * Tutorial 01 - Basic Environment Setup
  * 
- * This is the main JavaScript file for the GLSL Tutorial.
+ * This is the main Javasript file for the GLSL Tutorial.
  * 
  * In this lesson we will setup the basic environment for the following lessons.
  */
@@ -73,7 +73,7 @@ function init() {
     container.appendChild(renderer.domElement);
 
     // Fixed Camera Setup
-    camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 2000);
+    camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 1, 2000);
     camera.position.z = 20;
     cameraTarget = new THREE.Vector3(0, 0, 0);
 
@@ -107,7 +107,7 @@ function onWindowResize() {
  */
 function loadModel() {
     var loader = new THREE.STLLoader();
-    loader.load('../assets/stellated.stl', function (geometry) {
+    loader.load('/assets/stellated.stl', function (geometry) {
         setupAttributes(geometry);
         var material = new THREE.MeshPhongMaterial({ color: 0xff5533, specular: 0x111111, shininess: 200 });
         var mesh = new THREE.Mesh(geometry, material);
